@@ -14,7 +14,8 @@ TO_TIMESTAMP('20210701', 'yyyyMMdd')
 SELECT FROM_TIMESTAMP(NOW(), 'yyyyMMdd')
 SELECT FROM_TIMESTAMP(NOW(), 'yyyyMM')
 
--- REGEXP_REPLACE(column, 'A', 'B') : Find the pattern 'A' and convert it to 'B'
+-- REGEXP_REPLACE(column, 'A', 'B')
+-- Find the pattern 'A' and replace it to 'B'
 -- ex) '2021-07-01 00:00:00' -> '20210701 00:00:00'
 SELECT REGEXP_REPLACE(CAST(now() AS STRING),'-','')
 
