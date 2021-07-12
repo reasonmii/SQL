@@ -1,0 +1,13 @@
+TRUNCATE TABLE IF EXISTS tableName;
+DROP TABLE IF EXISTS tableName;
+
+INSERT OVERWRITE TABLE tableName
+SELECT *
+FROM originalTableName
+
+INSERT INTO TABLE tableName
+SELECT *
+FROM originalTableName
+
+
+
