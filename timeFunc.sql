@@ -1,0 +1,80 @@
+/* ===========================================================
+Convert Type
+============================================================== */
+
+-- String to timestamp
+-- ex) timeColumn : '202105' -> '2021-05-01 00:00:00'
+CAST(CONCAT_WS('-', LEFT(timeColumn, 4), SUBSTR(timeColumn, 5, 2), '01') AS TIMESTAMP)
+
+-- String to timestamp
+-- ex) '20210701' -> '2021-07-01 00:00:00'
+TO_TIMESTAMP('20210701', 'yyyyMMdd')
+
+
+-- timestamp to String
+-- ex) '2021-07-01 00:00:00' -> '20210701'
+SELECT FROM_TIMESTAMP(NOW(), 'yyyyMMdd')
+
+-- timestamp to UNIX_TIMESTAMP
+SELECT UNIX_TIMESTAMP(NOW())
+
+
+/* ===========================================================
+Calculate time difference
+============================================================== */
+
+-- difference of seconds
+-- ex) timeColumn1 : '071501', timeColumn2 : '071001' -> 300 (seconds)
+(HOUR(to_timestamp(timeColumn1, 'HHmmss')) * 3600
+ + MINUTE(to_timestamp(timeColumn1, 'HHmmss')) * 60
+ + SECOND(to_timestamp(timeColumn1, 'HHmmss')))
+ -
+(HOUR(to_timestamp(timeColumn2, 'HHmmss')) * 3600
+ + MINUTE(to_timestamp(timeColumn2, 'HHmmss')) * 60
+ + SECOND(to_timestamp(timeColumn2, 'HHmmss')))
+
+-- difference of date
+-- ex) timeColumn1 : '20210705', timeColumn2 : '20210701' -> 4
+DATEDIFF(TO_TIMESTAMP(timeColumn1, 'yyyyMMdd'), TO_TIMESTAMP(timeColumn2, 'yyyyMMdd')) as dayDiff
+
+-- difference of 'UNIX_TIMESTAMP'
+-- timeColumn1 and timeColumn2 must be timestamp type
+from_timestamp(cast((unix_timestamp(timeColumn1) - unix_timestamp(timeColumn2)) as timestamp), 'dd') as day
+from_timestamp(cast((unix_timestamp(timeColumn1) - unix_timestamp(timeColumn2)) as timestamp), 'HH') as hour
+
+
+/* ===========================================================
+Add/Sub time
+============================================================== */
+
+-- Add
+-- ex) '2021-07-03' -> '2021-07-10 00:00:00'
+DATE_ADD(to_timestamp('2021-07-03', 'yyyy-MM-dd'), INTERVAL 7 DAY) AS day
+DATE_ADD(to_timestamp('2021-07-03', 'yyyy-MM-dd'), INTERVAL -1 MONTH) AS MM
+DATE_ADD(to_timestamp('2021-07-03', 'yyyy-MM-dd'), INTERVAL -1 year) AS YY
+
+-- Sub
+-- ex) '2021-07-08' -> '2021-07-01 00:00:00'
+SELECT DATE_SUB(to_timestamp('2021-07-08', 'yyyy-MM-dd'), INTERVAL 7 DAY) AS day
+
+-- Add/Sub Month
+SELECT ADD_MONTHS(NOW(), 1)   # +1 month
+
+-- ex) '2021-07-01' -> '202104'
+SELECT FROM_UNIXTIME(UNIX_TIMESTAMP(ADD_MONTHS(CAST('2021-07-01' AS TIMESTAMP),-3)),'yyyyMM')	
+
+
+/* ===========================================================
+First day of 12 month before
+============================================================== */
+
+-- ex) now() : '2021-07-05 14:30:00' -> 2020-07-01 00:00:00
+SELECT DATE_ADD(LAST_DAY(DATE_ADD(NOW(), INTERVAL -13 MONTH)), INTERVAL 1 DAY) AS DAY1
+
+-- ex) now() : '2021-07-05 14:30:00' -> '20200701'
+CONCAT(FROM_TIMESTAMP(DATE_ADD(NOW(), INTERVAL -1 YEAR), 'yyyyMM'), '01)
+/* ===========================================================
+Days left in this month
+============================================================== */
+-- ex) timeColumn : '20210723' -> 8 (until '20210731')
+DATEDIFF(LAST_DAY(TO_TIMESTAMP(timeColumn, 'yyyyMMdd')), TO_TIMESTAMP(timecolumn, 'yyyyMMdd')) as dayLeft
