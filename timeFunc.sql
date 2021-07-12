@@ -84,7 +84,7 @@ First day of 12 month before
 SELECT DATE_ADD(LAST_DAY(DATE_ADD(NOW(), INTERVAL -13 MONTH)), INTERVAL 1 DAY) AS DAY1
 
 -- ex) now() : '2021-07-05 14:30:00' -> '20200701'
-SELECT CONCAT(FROM_TIMESTAMP(DATE_ADD(NOW(), INTERVAL -1 YEAR), 'yyyyMM'), '01)
+SELECT CONCAT(FROM_TIMESTAMP(DATE_ADD(NOW(), INTERVAL -1 YEAR), 'yyyyMM'), '01')
 
        
 /* ===========================================================
