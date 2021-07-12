@@ -2,21 +2,33 @@
 Convert Type
 ============================================================== */
 
--- String to timestamp
+-- 1) String to timestamp
 -- ex) timeColumn : '202105' -> '2021-05-01 00:00:00'
 CAST(CONCAT_WS('-', LEFT(timeColumn, 4), SUBSTR(timeColumn, 5, 2), '01') AS TIMESTAMP)
 
--- String to timestamp
 -- ex) '20210701' -> '2021-07-01 00:00:00'
 TO_TIMESTAMP('20210701', 'yyyyMMdd')
 
-
--- timestamp to String
+-- 2) timestamp to String
 -- ex) '2021-07-01 00:00:00' -> '20210701'
 SELECT FROM_TIMESTAMP(NOW(), 'yyyyMMdd')
+SELECT FROM_TIMESTAMP(NOW(), 'yyyyMM')
 
--- timestamp to UNIX_TIMESTAMP
+-- REGEXP_REPLACE(column, 'A', 'B') : Find the pattern 'A' and convert it to 'B'
+-- ex) '2021-07-01 00:00:00' -> '20210701 00:00:00'
+SELECT REGEXP_REPLACE(CAST(now() AS STRING),'-','')
+
+-- ex) '2021-07-01 00:00:00' -> '20210701'
+SELECT LEFT(REGEXP_REPLACE(CAST(now() AS STRING),'-',''), 8)
+
+-- 3) timestamp to UNIX_TIMESTAMP
+-- ex) '2021-07-01 00:00:00' -> '1,625,097,600'
 SELECT UNIX_TIMESTAMP(NOW())
+
+-- 4) UNIX_TIMESTAMP to timestamp
+-- Input should be a 'String' type
+-- ex) '1625097600' -> '2021-07-01 00:00:00'
+SELECT FROM_UNIXTIME(1625097600)
 
 
 /* ===========================================================
@@ -72,9 +84,23 @@ First day of 12 month before
 SELECT DATE_ADD(LAST_DAY(DATE_ADD(NOW(), INTERVAL -13 MONTH)), INTERVAL 1 DAY) AS DAY1
 
 -- ex) now() : '2021-07-05 14:30:00' -> '20200701'
-CONCAT(FROM_TIMESTAMP(DATE_ADD(NOW(), INTERVAL -1 YEAR), 'yyyyMM'), '01)
+SELECT CONCAT(FROM_TIMESTAMP(DATE_ADD(NOW(), INTERVAL -1 YEAR), 'yyyyMM'), '01)
+
+       
 /* ===========================================================
 Days left in this month
 ============================================================== */
--- ex) timeColumn : '20210723' -> 8 (until '20210731')
+
+ -- ex) timeColumn : '20210723' -> 8 (until '20210731')
 DATEDIFF(LAST_DAY(TO_TIMESTAMP(timeColumn, 'yyyyMMdd')), TO_TIMESTAMP(timecolumn, 'yyyyMMdd')) as dayLeft
+
+
+/* ===========================================================
+Day of the Week
+Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+============================================================== */
+
+SELECT DAYNAME(now()) as dayName
+              
+-- ex) colName : '20210705' -> 'Monday'
+SELECT DAYNAME(TO_TIMESTAMP(colName, 'yyyyMMdd')) as dayName
