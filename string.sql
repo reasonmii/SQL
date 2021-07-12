@@ -7,3 +7,10 @@ concat_ws(seperator, word1, word2, word3, ...)
 -- ex) REGEXP_REPLACE('2021-07-01', '-', '') -> '20210701'
 REGEXP_REPLACE(column_name, word1, word2)
 
+
+LEFT(colName, 4)
+RIGHT(colName, 4)
+SUBSTR(colName, 4, 3)
+
+
+
