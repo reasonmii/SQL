@@ -1,3 +1,6 @@
+-- ilike : Find the letter without considering whether it's upper or lower case
+-- rlike : same as REGEXP
+
 -- Start with 'A'
 -- ex) 'A', 'AB'
 where colName regexp 'A.*'	
@@ -25,3 +28,7 @@ where colName regexp '^C[aeiou]+r.*$'
 -- There should be at least two of [aeiou] at the end
 where colName regexp '.*[aeiou](2,}$'
 where colName rlike '.*[aeiou](2,}$'
+
+
+
+
