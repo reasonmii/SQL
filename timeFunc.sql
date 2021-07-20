@@ -61,6 +61,12 @@ DATEDIFF(TO_TIMESTAMP(timeColumn1, 'yyyyMMdd'), TO_TIMESTAMP(timeColumn2, 'yyyyM
 from_timestamp(cast((unix_timestamp(timeColumn1) - unix_timestamp(timeColumn2)) as timestamp), 'dd') as day
 from_timestamp(cast((unix_timestamp(timeColumn1) - unix_timestamp(timeColumn2)) as timestamp), 'HH') as hour
 
+-- ex) timeColumn1 : 2021-07-09 13:58:50
+--     timeColumn2 : 2021-06-25 12:08:39
+--     -> 14 01:01:00
+cast(from_unixtime(unix_timestamp(timeColumn1) - unix_timestamp(timeColumn2), 'dd') as bigint) - 1 as timediff
+from_unixtime(unix_timestamp(timeColumn1) - unix_timestamp(timeColumn2), 'HH:mm:ss') as timediff
+
 
 /* ===========================================================
 Add/Sub time
