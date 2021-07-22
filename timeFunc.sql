@@ -67,6 +67,17 @@ from_timestamp(cast((unix_timestamp(timeColumn1) - unix_timestamp(timeColumn2)) 
 cast(from_unixtime(unix_timestamp(timeColumn1) - unix_timestamp(timeColumn2), 'dd') as bigint) - 1 as timediff
 from_unixtime(unix_timestamp(timeColumn1) - unix_timestamp(timeColumn2), 'HH:mm:ss') as timediff
 
+-- difference of months
+-- ex) timecolumn1 : '20210701'
+--     timecolumn2 : '20191201'
+--     -> 19.002739726
+DATEDIFF(TO_TIMESTAMP(timeColumn1, 'yyyyMMdd'), TO_TIMESTAMP(timeColumn2, 'yyyyMMdd')) / 365 * 12 as monthdiff
+
+-- ex) timecolumn1 : '20210701'
+--     timecolumn2 : '20191201'
+--     -> 19
+MONTHS_BETWEEN(TO_TIMESTAMP(timeColumn1, 'yyyyMMdd'), TO_TIMESTAMP(timeColumn2, 'yyyyMMdd'))
+
 
 /* ===========================================================
 Add/Sub time
