@@ -39,5 +39,16 @@ SELECT LPAD('HELLO', 7, '*') AS col1
 SELECT RPAD('HELLO', 7, '*') AS col1
 
 
+/* ===========================================================
+Where
+============================================================== */
 
-
+WHERE 1=1
+AND column1 = 'Hello'
+AND column2 <> 'HAPPY'
+AND column3 != 'smile'
+AND column4 in ('dog', 'cat', 'rabbit')
+AND column5 not in ('apple', 'banana', 'carrot')
+AND column6 LIKE '%ok%'
+AND column7 RLIKE 'yes|like|good'
+AND column8 between '202101' AND '202112'
