@@ -17,7 +17,7 @@ FROM originalTableName
 DESCRIBE TABLE_NAME
 DESCRIBE FORMATTED TABLE_NAME
 
--- Create table
+-- CREATE TABLE
 CREATE TABLE tableName (
   colName1 STRING,
   colName2 STRING,
@@ -32,5 +32,24 @@ VALUES
 ("blue", "square", "Y", "carrot", "paper"),
 ("green", "circle", "N", "melon", "paper")
 
-
-
+-- CREATE TABLE : WITH TEMP TABLE
+CREATE TABLE tableName
+WITH
+  temp1 AS (SELECT colName1
+                 , colName2
+            FROM table1)
+, temp2 AS (SELECT colName1
+                 , colName2
+            FROM table2),
+, temp3 AS (SELECT colName1
+                 , colName2
+            FROM table3)
+SELECT t1.colName1
+     , t1.colName2
+     , t2.colName2
+     , t3.colName2
+     , t4.colName2
+FROM table4 as t4
+LEFT JOIN temp1 as t1 on t1.colName1 = t4.colName1
+LEFT JOIN temp2 as t2 on t2.colName1 = t4.colName1
+LEFT JOIN temp3 as t3 on t3.colName1 = t4.colName1
