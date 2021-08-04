@@ -1,5 +1,8 @@
--- ilike : Find the letter without considering whether it's upper or lower case
--- rlike : same as REGEXP
+-- ILIKE : Find the letter without considering whether it's upper or lower case
+
+-- RLIKE : SAME AS REGEXP
+-- Select the row where the column includes the word 'happy', 'smile' or 'good'
+where colName RLIKE 'happy|smile|good'
 
 -- Start with 'A'
 -- ex) 'A', 'AB'
@@ -28,7 +31,4 @@ where colName regexp '^C[aeiou]+r.*$'
 -- There should be at least two of [aeiou] at the end
 where colName regexp '.*[aeiou](2,}$'
 where colName rlike '.*[aeiou](2,}$'
-
-
-
 
