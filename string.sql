@@ -51,4 +51,5 @@ AND column4 in ('dog', 'cat', 'rabbit')
 AND column5 not in ('apple', 'banana', 'carrot')
 AND column6 LIKE '%ok%'
 AND column7 RLIKE 'yes|like|good'
-AND column8 between '202101' AND '202112'
+AND column8 >= '202012'
+AND column9 between '202101' AND '202112'
