@@ -11,7 +11,8 @@ GROUP BY 1,2,3
 SELECT column1
      , sum(case when column2 like '%ABC%' then 1 else 0 end) as sum1
      , sum(case when column3 in ('A', 'B') then 1 else 0 end) as sum2
-     , sum(case when column4 is not null then 1 else 0 end) as sum3
+     , sum(case when column4 RLIKE ('apple|banana|carrot') then 1 else 0 end) as sum3
+     , sum(case when column5 is not null then 1 else 0 end) as sum4
 FROM TABLE
 GROUP BY 1
 
