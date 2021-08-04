@@ -89,6 +89,9 @@ DATE_ADD(to_timestamp('2021-07-03', 'yyyy-MM-dd'), INTERVAL 7 DAY) AS day
 DATE_ADD(to_timestamp('2021-07-03', 'yyyy-MM-dd'), INTERVAL -1 MONTH) AS MM
 DATE_ADD(to_timestamp('2021-07-03', 'yyyy-MM-dd'), INTERVAL -1 year) AS YY
 
+-- ex) '2021-07' -> '2020-07'
+FROM_TIMESTAMP(ADD_MONTHS(CAST(CONCAT_WS('-', LEFT('2021-07',4), SUBSTR('2021-07',5,2), '01') AS TIMESTAMP), -12), 'yyyyMM')
+
 -- Sub
 -- ex) '2021-07-08' -> '2021-07-01 00:00:00'
 SELECT DATE_SUB(to_timestamp('2021-07-08', 'yyyy-MM-dd'), INTERVAL 7 DAY) AS day
