@@ -1,7 +1,4 @@
-/* ===========================================================
-COUNT
-============================================================== */
-
+-- COUNT
 SELECT column1
      , column2
      , column3
@@ -10,10 +7,7 @@ SELECT column1
 FROM TABLE
 
 
-/* ===========================================================
-SUM
-============================================================== */
-
+-- SUM
 SELECT column1
      , sum(case when column2 like '%ABC%' then 1 else 0 end) as sum1
      , sum(case when column3 in ('A', 'B') then 1 else 0 end) as sum2
@@ -21,20 +15,14 @@ SELECT column1
 FROM TABLE
 
 
-/* ===========================================================
-AVG
-============================================================== */
-
+-- AVG
 SELECT column1
      , AVG(column1) as avg1
      , sum(case when column3 in ('A', 'B') then 1 else 0 end) / count(*) as avg2
 FROM TABLE
 
 
-/* ===========================================================
-DECODE
-============================================================== */
-
+-- DECODE
 SELECT column1
      -- if column2 is 'A' then 1 else 0
      , sum(DECODE(column2, 'A', 1, 0)) as sum1
