@@ -21,6 +21,10 @@ CAST(CONCAT_WS('-', LEFT(timeColumn, 4), SUBSTR(timeColumn, 5, 2), '01') AS TIME
 -- ex) '20210701' -> '2021-07-01 00:00:00'
 TO_TIMESTAMP('20210701', 'yyyyMMdd')
 
+-- These won't work in IMPALA
+TO_CHAR('2021-07-01 09:00:00', 'yyyyMMdd')
+TO_DATE('20210701', 'yyyyMMdd')
+
 -- 2) timestamp to String
 -- ex) '2021-07-01 00:00:00' -> '20210701'
 SELECT FROM_TIMESTAMP(NOW(), 'yyyyMMdd')
