@@ -13,6 +13,7 @@ SELECT column1
      , sum(case when column3 in ('A', 'B') then 1 else 0 end) as sum2
      , sum(case when column4 RLIKE ('apple|banana|carrot') then 1 else 0 end) as sum3
      , sum(case when column5 is not null then 1 else 0 end) as sum4
+     , sum(DECODE(column6, 'A', 1, 0)) as sum5  -- if the col6 is 'A' then 1 else 0
 FROM TABLE
 GROUP BY 1
 
