@@ -1,5 +1,3 @@
-[출처] (https://datalibrary.tistory.com/106)
-
 임팔라(Impala)는 하둡 시스템에 동작하는 SQL
 
 대량의 데이터를 처리하는 것에 최적화 되어 있는
@@ -64,3 +62,6 @@ CREATE TABLE partitioned_table (c1 STRING, c2 INT, c3 BOOLEAN)  PARTITIONED BY (
 ``` sql
 DESCRIBE FORMATTED [테이블명]
 ```
+
+
+[출처] (https://datalibrary.tistory.com/106)
