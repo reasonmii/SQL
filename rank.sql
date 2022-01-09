@@ -4,7 +4,16 @@
 SELECT ROW_NUMBER()OVER (PARTITION BY column1 order by column2) as ODR
 SELECT ROW_NUMBER()OVER (PARTITION BY column1 order by column2 desc) as ODR
 
-# RANK
+/*
+When you order by a field that may contain NULL values,
+any NULLs are considered to have the lowest value.
+So ordering in DESC order will see the NULLs appearing last. 
+*/
+
+SELECT ROW_NUMBER()OVER (PARTITION BY column1 order by column2 DESC NULLS LAST) as ODR
+SELECT ROW_NUMBER()OVER (PARTITION BY column1 order by column2 ASC NULLS LAST) as ODR
+
+-- RANK
 # ex) 1, 2, 3, 3, 5
 SELECT RANK()OVER (ORDER BY columnName) as rk
 SELECT RANK()OVER (ORDER BY columnName desc) as rk
