@@ -13,6 +13,9 @@ Replace word1 to word2
 -- ex) REGEXP_REPLACE('2021-07-01', '-', '') -> '20210701'
 REGEXP_REPLACE(column_name, word1, word2)
 
+-- ex) column1 : 2022-01-01 17:00:00 -> '20220101'
+REGEXP_REPLACE(TO_DATE(column1),'-','')
+
 
 /* ===========================================================
 LEFT, RIGHT, SUBSTR
