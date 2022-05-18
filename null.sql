@@ -9,4 +9,5 @@ IFNULL(colName, 0) as colName
 -- if 'A' and 'B' are NULL print 'C'
 COALESCE(A, B, C)
 
+ORDER BY colName NULLS FIRST
 
