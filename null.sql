@@ -10,4 +10,5 @@ IFNULL(colName, 0) as colName
 COALESCE(A, B, C)
 
 ORDER BY colName NULLS FIRST
+ORDER BY colName NULLS LAST
 
