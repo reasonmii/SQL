@@ -4,13 +4,15 @@
 
 DBeaver shortcut
 - ctrl + enter           : run
-- ctrl + \               : result+
-- alt + X                : run the script from top to bottom
+- ctrl + \               : result+ (new tab)
+- alt + X                : run current script from top to bottom
+- ctrl + alt + shift + X : run every query in current script at the same time (result+)
 - ctrl + /	             : comment
 - alt + shift + a        : mouse shape +
 - ctrl + d               : delete the line
 - ctrl + shift + l       : lower case
 - ctrl + shift + u	     : upper case
-- 특정 라인 선택 + tab  : 한 번에 들여쓰기
+- 특정 line 드래그 + tab  : 해당 line 한 번에 들여쓰기
+- alt + ↑ / alt + ↓      : select upper/lower query
 
 
