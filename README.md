@@ -1,4 +1,3 @@
-
 <b>sites</b>
 - [The Ultimate Guide to SQL Window Functions](https://www.stratascratch.com/blog/the-ultimate-guide-to-sql-window-functions/)</br>
 - [Advanced SQL](https://www.kaggle.com/learn/advanced-sql)
@@ -16,5 +15,3 @@
 - ctrl + shift + u	     : upper case
 - 특정 line 드래그 + tab  : 해당 line 한 번에 들여쓰기
 - alt + ↑ / alt + ↓      : select upper/lower query
-
-
