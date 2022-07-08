@@ -12,3 +12,40 @@ CREATE EXTERNAL TABLE sandboxName2.tableName (
 STORED AS PARQUET
 LOCATION 'SBX/impala_table/sandboxName1/sandboxName2/tableName';
 
+---------------------------------------------------
+
+CREATE TABLE DASQL.BASIC_TEMP1
+(
+	CUST_NAME VARCHAR2(10) NOT NULL  -- NULL 값을 허용하지 않음 (default : 허용)
+  , SEX       VARCHAR2(3)
+  , AGE       NUMBER(2)
+);
+
+INSERT INTO DASQL.BASIC_TEMP1 VALUES('앤', '여', 34);
+INSERT INTO DASQL.BASIC_TEMP1 VALUES('해밀턴', '남', 42);
+INSERT INTO DASQL.BASIC_TEMP1 VALUES('빌리', '남', 16);
+
+---------------------------------------------------
+
+CREATE TABLE DASQL.CUST_BUY_INFO
+(
+	CUST_NAME VARCHAR2(10) NOT NULL
+  , BUY_DATE  DATE
+  , BUY_NM    VARCHAR2(30)
+  , PAY       NUMBER(10)
+);
+
+-- 테이블 설명
+COMMENT ON TABLE DASQL.CUST_BUY_INFO IS '구매내역';
+
+-- 컬럼 설명
+COMMENT ON COLUMN DASQL.CUST_BUY_INFO.CUST_NAME IS '고객명';
+COMMENT ON COLUMN DASQL.CUST_BUY_INFO.BUY_DATE IS '구매일자';
+COMMENT ON COLUMN DASQL.CUST_BUY_INFO.BUY_NM IS '상품';
+COMMENT ON COLUMN DASQL.CUST_BUY_INFO.PAY IS '지불금액';
+
+INSERT INTO DASQL.CUST_BUY_INFO VALUES('김서연', TO_DATE('2022.08.05', 'yyyy.mm.dd'), '샴푸, 린스', 23000);
+INSERT INTO DASQL.CUST_BUY_INFO VALUES('이예준', TO_DATE('2022.08.15', 'yyyy.mm.dd'), '초콜렛', 700);
+INSERT INTO DASQL.CUST_BUY_INFO VALUES('김지민', TO_DATE('2022.08.31', 'yyyy.mm.dd'), '오렌지주스', 3800);
+INSERT INTO DASQL.CUST_BUY_INFO VALUES('신우진', TO_DATE('2022.08.18', 'yyyy.mm.dd'), '아이스크림', 1500);
+INSERT INTO DASQL.CUST_BUY_INFO VALUES('이하은', TO_DATE('2022.08.26', 'yyyy.mm.dd'), '밑반찬', 5000);
