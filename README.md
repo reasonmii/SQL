@@ -1,8 +1,10 @@
 
-[The Ultimate Guide to SQL Window Functions](https://www.stratascratch.com/blog/the-ultimate-guide-to-sql-window-functions/)</br>
-[Advanced SQL](https://www.kaggle.com/learn/advanced-sql)
+<b>sites</b>
+- [The Ultimate Guide to SQL Window Functions](https://www.stratascratch.com/blog/the-ultimate-guide-to-sql-window-functions/)</br>
+- [Advanced SQL](https://www.kaggle.com/learn/advanced-sql)
+- [SQL Tutorial](https://www.w3schools.com/sql/)
 
-DBeaver shortcut
+<b>DBeaver shortcut</b>
 - ctrl + enter           : run
 - ctrl + \               : result+ (new tab)
 - alt + X                : run current script from top to bottom
